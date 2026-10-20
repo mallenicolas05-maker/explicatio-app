@@ -76,3 +76,11 @@ features require your own service setup. This repository does not deploy service
 run the research pipeline, or activate billing automatically.
 
 The snapshot excludes local credentials, generated builds, and installed dependencies.
+
+## Hosting
+
+The repository includes Netlify build settings and a single-page-app fallback so
+links such as `/studies` and `/auth/callback` work when opened directly. Set
+`VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY` in the host's environment
+settings before building. Use only the browser-safe publishable/anonymous key.
+The intended production domain is `explicatio.co`.
