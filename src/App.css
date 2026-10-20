@@ -1,0 +1,102 @@
+/* Hide scrollbar globally */
+html {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+html::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for category filter */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Prose-like styling for research content */
+.prose-editorial p {
+  margin-bottom: 1.5rem;
+}
+
+.prose-editorial p:last-child {
+  margin-bottom: 0;
+}
+
+/* Button Sweep Animation (hover-based, uses stroke-draw-cw direction) */
+.btn-sweep-segment {
+  stroke-dasharray: 4;
+  stroke-dashoffset: 4;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.4s ease;
+  opacity: 0;
+}
+.btn-sweep-trigger:hover .btn-sweep-segment {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+.btn-sweep-trigger:hover .btn-sweep-border {
+  opacity: 1;
+}
+
+/* Card Sweep Animation (hover-based, clockwise) */
+.card-sweep-segment {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1s cubic-bezier(0.19, 1, 0.22, 1), opacity 0.5s ease;
+  opacity: 0;
+}
+.card-active .card-sweep-segment {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+/* Clockwise Stroke Draw — reusable SVG border animation
+   Usage: Add class "stroke-draw-cw" to any SVG path/rect with pathLength="1"
+*/
+.stroke-draw-cw,
+.category-sweep-active {
+  stroke-dasharray: 1 1;
+  stroke-dashoffset: 1;
+  animation: stroke-draw-cw 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes stroke-draw-cw {
+  0% { stroke-dashoffset: 1; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Continuous orbiting stroke for audio player */
+.audio-orbit-stroke {
+  stroke-dasharray: 0.25 0.75;
+  stroke-dashoffset: 0;
+  animation: audio-orbit 2.5s linear infinite;
+}
+
+@keyframes audio-orbit {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1; }
+}
+
+@keyframes waveform-bounce {
+  0% { transform: scaleY(0.4); }
+  100% { transform: scaleY(1); }
+}
+
+/* Highlight sweep animation for navigating to saved highlights */
+@keyframes highlight-sweep {
+  0% {
+    background-size: 0% 100%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+
+.highlight-sweep-animate {
+  background-repeat: no-repeat;
+  background-position: left center;
+  animation: highlight-sweep 0.8s ease-out forwards;
+}
